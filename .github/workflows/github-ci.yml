@@ -41,12 +41,13 @@ jobs:
           cd basex/bin
           ./basex -c "ALTER PASSWORD admin admin"
           nohup ./basexhttp > basex.log 2>&1 &
+          sleep 5
 
-      - name: Wait for BaseX to Start
-        run: sleep 5  # Give it a few seconds to initialize
+      - name: Map "basex" to "localhost"
+        run: echo "127.0.0.1 basex" | sudo tee -a /etc/hosts
 
-      - name: Verify BaseX HTTP Server
-        run: curl -s -I http://localhost:8080/dba || (echo "BaseX HTTP server failed to start" && exit 1)
+      - name: Verify BaseX is Running
+        run: curl -s -I http://basex:8080/dba || (echo "BaseX HTTP server failed to start" && exit 1)
 
       - name: Run Playwright Tests
         run: npx playwright test
