@@ -1,0 +1,13 @@
+{
+  "name": "basex-dba-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@git.basex.io:ms/basex-dba-test.git",
+  "author": "Michael <ms@basex.org>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.0"
+  },
+  "scripts": {}
+}
